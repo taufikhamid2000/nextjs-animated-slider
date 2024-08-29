@@ -1,18 +1,18 @@
 // /pages/api/update-feedback.js
-import db from '../../lib/database';
+import pool from '../../lib/database';
 
 export default function handler(req, res) {
   if (req.method === 'PUT') {
-    const { id, name, email, message } = req.body;
+    const { id, message } = req.body;
 
-    db.run(
-      'UPDATE feedback SET name = ?, email = ?, message = ? WHERE id = ?',
-      [name, email, message, id],
-      function (err) {
+    pool.query(
+      'UPDATE feedback SET message = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2 RETURNING *',
+      [message, id],
+      (err, result) => {
         if (err) {
           res.status(500).json({ error: 'Failed to update feedback' });
         } else {
-          res.status(200).json({ message: 'Feedback updated successfully!' });
+          res.status(200).json(result.rows[0]);
         }
       }
     );

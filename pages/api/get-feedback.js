@@ -1,14 +1,13 @@
 // /pages/api/get-feedback.js
-import db from '../../lib/database';
+import pool from '../../lib/database';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
-    // Fetch all feedback entries from the database
-    db.all('SELECT * FROM feedback', [], (err, rows) => {
+    pool.query('SELECT * FROM feedback ORDER BY id DESC', (err, result) => {
       if (err) {
         res.status(500).json({ error: 'Failed to retrieve feedback' });
       } else {
-        res.status(200).json(rows);
+        res.status(200).json(result.rows);
       }
     });
   } else {
