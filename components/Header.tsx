@@ -52,8 +52,8 @@ export default Header;
 
 const menus = [
   "Home",
-  "Feedback",
-  "View Feedback",
+  "Feedbacks",
+  "View Feedbacks",
   "Storyline",
   "Join the team (OTW)",
   "Contacts (OTW)",
