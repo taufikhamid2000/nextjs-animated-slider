@@ -12,16 +12,33 @@ const Feedback = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setIsSubmitting(true);
-    
-        // Simulate an API call
-        setTimeout(() => {
-            console.log({ name, email, message });
-            setIsSubmitting(false);
+      
+        try {
+          const response = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, message }),
+          });
+      
+          if (response.ok) {
+            console.log('Feedback submitted successfully');
+            alert('Feedback submitted successfully!');
             setName('');
             setEmail('');
             setMessage('');
-        }, 2000);
-    };    
+          } else {
+            console.error('Failed to submit feedback');
+            alert('Failed to submit feedback.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        } finally {
+          setIsSubmitting(false);
+        }
+      };          
 
     return (
         <>

@@ -19,7 +19,7 @@ function Header() {
   return (
     <div className="absolute mt-5 flex w-full flex-wrap items-center justify-between gap-2 px-5 text-xs font-medium uppercase opacity-90 md:px-10">
       <Head>
-        <title>Cool Project</title>
+        <title>AC Code SEA</title>
       </Head>
       <div className="flex items-center gap-2 font-medium tracking-[4px]">
         <IoIosGlobe className="text-xl" />
@@ -57,4 +57,5 @@ const menus = [
   "Merchandise",
   "Join the team",
   "Contacts",
+  "View Feedback", // Add this line
 ];
