@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Link from 'next/link';
 import { useRouter } from 'next/router'; // Import useRouter
 import { motion } from "framer-motion";
-import { IoIosGlobe, IoMdSearch, IoMdPerson } from "react-icons/io";
+import { IoMdSearch, IoMdPerson } from "react-icons/io";
 import Head from "next/head";
+import Logo from "./Logo";
 
 function Header() {
   const router = useRouter(); // Use the useRouter hook
@@ -22,7 +23,7 @@ function Header() {
         <title>AC Code SEA</title>
       </Head>
       <div className="flex items-center gap-2 font-medium tracking-[4px]">
-        <IoIosGlobe className="text-xl" />
+        <Logo className="h-5 w-5" />
         Assassin's Creed Code SEA
       </div>
       <ul className="flex flex-wrap items-center gap-3 text-[11px] md:gap-10">
